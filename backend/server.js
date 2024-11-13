@@ -5,7 +5,7 @@ const port = 3000;
 
 app.get('/', (req, res) => {
     try {
-        res.send('Hello World!');
+        res.send('Heello World!');
     } catch (error) {
         console.error('Error in / route:', error);
         res.status(500).send('Internal Server Error');
