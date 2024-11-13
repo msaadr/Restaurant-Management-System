@@ -4,7 +4,7 @@ import '../CSS/LoginSignup.css';
 const SignUp = () => {
   const [upperHeading, setUpperHeading] = useState('Login Form');
   const [state, setState] = useState(true);
-  const [transition, setTransition] = useState(true); // This will control the transition effect
+  const [transition, setTransition] = useState(true); 
 
   const setButtonForSignUp = () => {
     setUpperHeading('Signup Form');
@@ -16,12 +16,11 @@ const SignUp = () => {
     setState(true);
   };
 
-  // Trigger transition when form changes
   useEffect(() => {
-    setTransition(false); // Start by hiding the current form
+    setTransition(false);
     setTimeout(() => {
-      setTransition(true); // After a short delay, show the new form
-    }, 400); // Adjust timing to match the transition duration
+      setTransition(true); 
+    }, 400); 
   }, [upperHeading]);
 
   return (
@@ -33,7 +32,7 @@ const SignUp = () => {
           <button className={`${state ? 'buttt' : ''}`} onClick={setButtonForLogin}>Login</button>
           <button className={`${!state ? 'buttt' : ''}`} onClick={setButtonForSignUp}>Sign Up</button>
         </div>
-        
+
         {upperHeading === 'Login Form' ? (
           <div
             className={`main-log-sig-container log ${transition ? 'show' : 'hide'}`}
@@ -54,9 +53,10 @@ const SignUp = () => {
             className={`main-log-sig-container sig ${transition ? 'show' : 'hide'}`}
           >
             <form className="form-log-sig" action="">
+              <input type="text" name="FullName" id="FullName" placeholder='Full name' />
+              <input type="text" name="userName" id="userName" placeholder='User name' />
               <input type="email" name="email" id="email" placeholder='Email Address' />
               <input type="password" name="password" id="password" placeholder='Password' />
-              <input type="password" name="confirmPassword" id="confirmPassword" placeholder='Confirm Password' />
               <button className='log-sig-buut'>Sign Up</button>
             </form>
           </div>
