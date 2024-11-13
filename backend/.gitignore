@@ -1,0 +1,29 @@
+# Node.js dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# npm debug file
+npm-debug.log*
+
+# Operating system files
+.DS_Store   # macOS system files
+Thumbs.db   # Windows system files
+
+# IDE/editor settings
+.vscode/     # Visual Studio Code settings
+.idea/       # JetBrains IDE settings
+*.sublime-workspace  # Sublime Text workspace
+
+# Test coverage
+coverage/
+
+# Build output
+/dist/
+
+# Other unwanted files
+*.tgz        # npm package tarballs
