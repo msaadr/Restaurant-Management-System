@@ -20,4 +20,3 @@ pool.getConnection((err, connection) => {
 })
 
 module.exports = pool;
-// C:\wamp64\bin\mysql\mysql8.3.0\bin\mysqld
