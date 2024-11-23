@@ -5,7 +5,11 @@ import { addToCart, removeFromCart, clearAllCart } from '../../Redux/StoreSlice/
 
 const CartItem = () => {
     const allCartsData = useSelector((state) => state.cart.carts);
+    console.log(allCartsData);
+    
     const totalQuantity = useSelector(state => state.cart.quantity);
+    console.log(allCartsData.length);
+    
     const dispatch = useDispatch();
 
     const reduce = (payload) => {
@@ -22,13 +26,13 @@ const CartItem = () => {
 
     return (
         <div className='CartItem'>
-            <h1>Items In Cart:{totalQuantity}</h1>
+            <h1>{totalQuantity > 0 ? `Items In Cart: ${totalQuantity}` : 'No items in cart'}</h1>
             {allCartsData.map((element, index) => (
                 element.itemQuantity > 0 && (
-                    
+
                     <div className="cart-item" key={element.id}>
                         <img src={element.picture} alt={element.name} />
-                        
+
                         <div className="cart-item-data">
                             <div className='cart-item-name'>{element.name}</div>
                             <div className="buttons">
@@ -44,7 +48,8 @@ const CartItem = () => {
                     </div>
                 )
             ))}
-            {allCartsData.length > 0 && <button onClick={clear} className='clear-cart'>Clear Cart</button>}
+            <button>Confirm Your Order</button>
+            {totalQuantity > 0 && <button onClick={clear} className='clear-cart'>Clear Cart</button>}
         </div>
     );
 }

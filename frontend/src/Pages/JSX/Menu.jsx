@@ -22,7 +22,7 @@ const Menu = (props) => {
 
   // Filter the menu based on the selected category
   const filteredMenu = props.category 
-    ? allMenuArray.filter(menu => menu.title == props.category) 
+    ? allMenuArray.filter(menu => menu.title === props.category) 
     : allMenuArray; // If no category is selected, show all items
     const capitalizeWords = (text = '') => {
       return text.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');

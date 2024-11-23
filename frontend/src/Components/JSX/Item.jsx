@@ -3,15 +3,16 @@ import '../CSS/Item.css';
 import { addToCart } from '../../Redux/StoreSlice/CartSlice';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-// import AddedToCart from './AddedToCart';
-
+import axios from 'axios';
 const Item = (props) => {
     const dispatch = useDispatch();
     const [message, setSuccessMessage] = useState(null) ;
 
-    const add = (payload) => {
+    const add = async(payload) => {
         dispatch(addToCart(payload));
         setSuccessMessage('Added to cart successfully!');
+        await axios.post('http://localhost:5000/api/cart/addToCart', {}, { withCredentials: true });
+        console.log(22);
         
         setTimeout(() => {
             setSuccessMessage('');
