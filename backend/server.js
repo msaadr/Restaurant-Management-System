@@ -12,7 +12,9 @@ app.use(cors({
 }));
 app.use(cookieParser())
 app.use(express.json());
-const port = 3000;
+dotenv.config();
+
+const port = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
     try {
@@ -27,5 +29,5 @@ app.use('/api/auth', auth);
 app.use('/api/cart', order)
 app.use('/api/addItemToCart',addItemInfo)
 app.listen(port, () => {
-    console.log(`Example app listening on port port!`);
+    console.log(`Example app listening on port ${port}!`);
 });

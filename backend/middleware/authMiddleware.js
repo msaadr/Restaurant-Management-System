@@ -11,17 +11,14 @@ const verifyAccessToken = async (req, res, next) => {
 
 
     if (!accessToken && !refreshToken) {
-        return res.status(401).json({ message: "Please login to continue" });
+        return res.status(401).json({ message: "Access token and refresh token are missing" });
     }
     try {
-        console.log('try-middlewre');
-        
         const decoded = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
         req.user = decoded;
 
         return next();
     } catch (err) {
-        console.log('catch-middlewre');
         if (err.name === 'TokenExpiredError' || err.name === 'JsonWebTokenError') {
             if (!refreshToken) {
                 return res.status(401).json({ message: "Refresh token is missing" });

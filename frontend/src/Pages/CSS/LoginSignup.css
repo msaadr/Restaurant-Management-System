@@ -72,9 +72,9 @@
     height: 70%;
     justify-content: space-around;
     align-items: center;
-   
+   /* margin-top: 10px; */
     opacity: 0;
-    transition: opacity 0.4s ease; /* Smooth transition for opacity */
+    transition: opacity 0.2s ease; /* Smooth transition for opacity */
 }
 
 .main-log-sig-container.show {

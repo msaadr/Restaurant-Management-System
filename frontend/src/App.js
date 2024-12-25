@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Navbar from './Components/User/JSX/Navbar';
@@ -23,8 +24,31 @@ function App() {
   const [category, setCategory] = useState(null);
   const [showSignupForm, setShowSignupForm] = useState(true);
   const [name, setName] = useState(null);
-  console.log(category);
-  
+
+  const setUserData = async () => {  
+    try {
+      const response = await axios.get('http://localhost:5000/api/auth/getuser', {
+        withCredentials: true,
+      });
+      if (response.data.username) {
+        setName(response.data.username);
+        setShowSignupForm(false);
+      } else {
+        setShowSignupForm(true);
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+
+  useEffect(() => {
+    setUserData();
+    const intervalId = setInterval(() => {
+      setUserData();
+    }, 2000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
     <Router>
       <div className="App">
@@ -51,16 +75,15 @@ function App() {
             }
           />
           <Route path="/about" element={<AboutRestaurant />} />
-          <Route path="/special" element={<Special />} />
-          <Route path="/menu" element={<Menu  setItem={setSelectedItem} />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/contact" element={<Footer/>} />
-
-          <Route path="/cuisine" element={<Menu category={category} setItem={setSelectedItem}/>} />
-          <Route path="/categories" element={<Menu category={category} setItem={setSelectedItem} />} />
-          <Route path="/signUp" element={<SignUp/>} />
-
-          <Route path="/productshow" element={<ItemDisplay item={selectedItem} setItem={setSelectedItem} />} />
+          <Route path="/special" element={<><Special /><Footer /></>} />
+          <Route path="/menu" element={<><Menu setItem={setSelectedItem} /><Footer /></>} />
+          <Route path="/cart" element={<><Cart /><Footer /></>} />
+          <Route path="/contact" element={<Footer />} />
+          <Route path="/cuisine" element={<><Menu category={category} setItem={setSelectedItem} /><Footer /></>} />
+          <Route path="/categories" element={<><Menu category={category} setItem={setSelectedItem} /><Footer /></>} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path='/logout' element={<Logout setName={setName} />} />
+          <Route path="/productshow" element={<><ItemDisplay item={selectedItem} setItem={setSelectedItem} /><Footer /></>} />
         </Routes>
       </div>
     </Router>

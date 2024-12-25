@@ -17,11 +17,16 @@ const Navbar = (props) => {
         }
 
     };
+   useEffect(()=>{
 
+   },[props.name])
     return (
         <div className='navbar'>
             <div className="left">
                 <h2>Foodie's Restaurant</h2>
+                <div className='navbar-user-name'>
+                    <p>{props.name}</p>
+                </div>
             </div>
             <ul className='nav-ul'>
                 <li className='nav-li'>
@@ -46,7 +51,9 @@ const Navbar = (props) => {
                 <Link to='/menu'> <button>Order Online</button></Link>
                 <Link to='/cart'><i className="fa-solid  abc-nav fa-cart-shopping"></i></Link>
                 <p className="circcc">{totalQuantity}</p>
-                <Link to='/signUp' className='abc-nav'> <p>Login/Signup</p></Link>
+                <Link to={props.showLoginOrLogout === 'Logout' ? '/logout' : '/signup'} className="abc-nav">
+                    <p>{props.showLoginOrLogout}</p>
+                </Link>
             </div>
         </div>
     );

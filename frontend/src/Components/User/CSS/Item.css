@@ -18,7 +18,7 @@
 
 }
 .Item:hover{
-    transform: scale(1.1);
+    /* transform: scale(1.1); */
 }
 .linkkk{
     /* border: 12px solid red; */
@@ -45,8 +45,8 @@
 }
 .Item button{
     /* border: 2px solid red; */
-    width: 50%;
-    border-radius: 5px;
+    width: 45%;
+    border-radius: 2px;
     height: 30px;
     color: white;
     /* font-weight: bold; */
@@ -58,7 +58,7 @@
 
 }
 .Item button:hover{
-    transform: scale(1.3);
+    transform: scale(1.1);
 }
 .item-message{
     background-color: green;

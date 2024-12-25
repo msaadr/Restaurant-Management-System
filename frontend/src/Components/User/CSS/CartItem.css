@@ -30,7 +30,9 @@
     width: 15%;
     /* margin-left: 10px; */
 }
+.cart-item-data{
 
+}
 .cart-item-data {
     display: flex;
     /* border: 2px solid red; */
@@ -83,6 +85,8 @@
 
 .cart-item-name {
     font-weight: 700;
+    /* border: 2px solid red; */
+    width: 150px;
 }
 
 .oldprice-cart-item {
