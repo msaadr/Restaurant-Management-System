@@ -1,7 +1,7 @@
 .login-signUp {
     border: 2px solid rgb(0, 95, 162);
     width: 20vw;
-    height: 59vh;
+    height: 78vh;
     margin: auto;
     padding: 20px 20px;
     border-radius: 20px;
@@ -11,6 +11,23 @@
     font-size: 16px;
     transition: box-shadow 0.3 ease;
 }
+.response{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    text-align: center;
+    opacity: 0;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease-in;
+    background-color: #4a90e2;
+    color: white;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+}
+
 .login-signUp:hover{
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
@@ -30,9 +47,9 @@
 .form-log-sig {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    height: 100%;
+    height: 120%;
     width: 100%;
 }
 
@@ -75,6 +92,7 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
+    margin-top:0px;
 }
 
 .inp-log-sig {

@@ -1,5 +1,5 @@
 import React from 'react'
-import AboutRestaurant from '../../Components/JSX/AboutRestaurant'
+import AboutRestaurant from '../../Components/User/JSX/AboutRestaurant'
 
 const AboutUs = () => {
   return (

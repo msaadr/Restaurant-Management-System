@@ -1,5 +1,5 @@
 import React from 'react';
-import Item from '../../Components/JSX/Item';
+import Item from '../../Components/User/JSX/Item';
 import starters from '../../Assets/starters/starters.js';
 import chinese from '../../Assets/chinese/chinesecuisine.js';
 import desserts from '../../Assets/desserts/desserts.js';
@@ -20,10 +20,9 @@ const Menu = (props) => {
     { title: 'pakistani', items: pakistani }
   ];
 
-  // Filter the menu based on the selected category
   const filteredMenu = props.category 
-    ? allMenuArray.filter(menu => menu.title == props.category) 
-    : allMenuArray; // If no category is selected, show all items
+    ? allMenuArray.filter(menu => menu.title === props.category) 
+    : allMenuArray; 
     const capitalizeWords = (text = '') => {
       return text.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
   };

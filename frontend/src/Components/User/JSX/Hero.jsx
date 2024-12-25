@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import video from '../../Assets/6320525_Grill_Barbecue_3840x2160.mp4'; // Make sure the path is correct
+import video from '../../../Assets/6320525_Grill_Barbecue_3840x2160.mp4'; // Make sure the path is correct
 import '../CSS/Hero.css';
 
 const Hero = () => {

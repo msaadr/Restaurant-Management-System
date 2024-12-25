@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import image1 from '../../Assets/barbeque.jpeg';
-import image2 from '../../Assets/chocolate_cake.jpg';
-import image3 from '../../Assets/egfrrice.jpg';
-import image4 from '../../Assets/fast food.jpeg';
-import image5 from '../../Assets/garlic_bread.jpg';
-import image6 from '../../Assets/food1.webp';
-import image7 from '../../Assets/food2.webp';
+import image1 from '../../../Assets/barbeque.jpeg';
+import image2 from '../../../Assets/chocolate_cake.jpg';
+import image3 from '../../../Assets/egfrrice.jpg';
+import image4 from '../../../Assets/fast food.jpeg';
+import image5 from '../../../Assets/garlic_bread.jpg';
+
+import image6 from '../../../Assets/food1.webp';
+import image7 from '../../../Assets/food2.webp';
 
 import '../CSS/AboutRestaurant.css';
 

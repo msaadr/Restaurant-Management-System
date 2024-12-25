@@ -1,18 +1,31 @@
 const express = require('express');
 const app = express();
+const auth = require('./routes/authenticationRoutes');
+const order = require('./routes/orderRoutes')
+const addItemInfo=require('./routes/addItemRoutes')
+const dotenv = require('dotenv');
+const cookieParser = require('cookie-parser')
+const cors = require('cors');
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+}));
+app.use(cookieParser())
 app.use(express.json());
 const port = 3000;
 
 app.get('/', (req, res) => {
     try {
-        res.send('Heello World From Backend!');
+        res.send('Hello World!');
     } catch (error) {
         console.error('Error in / route:', error);
         res.status(500).send('Internal Server Error');
     }
 });
 
-
+app.use('/api/auth', auth);
+app.use('/api/cart', order)
+app.use('/api/addItemToCart',addItemInfo)
 app.listen(port, () => {
     console.log(`Example app listening on port port!`);
 });
