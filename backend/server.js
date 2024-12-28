@@ -3,6 +3,7 @@ const app = express();
 const auth = require('./routes/authenticationRoutes');
 const order = require('./routes/orderRoutes')
 const addItemInfo=require('./routes/addItemRoutes')
+const admin=require('./routes/admin')
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
@@ -27,6 +28,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', auth);
 app.use('/api/cart', order)
+app.use('/api/admin', admin)
 app.use('/api/addItemToCart',addItemInfo)
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`);

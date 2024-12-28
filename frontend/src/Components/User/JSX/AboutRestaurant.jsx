@@ -18,7 +18,7 @@ const pictures = [
     { id: 5, image: image5, text: 'Taste the goodness of our Garlic Bread.' },
 ];
 
-const AboutRestaurant = () => {
+const AboutRestaurant = (props) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
@@ -34,9 +34,9 @@ const AboutRestaurant = () => {
             <div className="center-res">
                 {/* <img src={image6} alt={`Dish ${currentIndex + 1}`} /> */}
                 <p className='abour-p'>
-                    <div style={{ fontSize: '80px' }}>About Our Restaurant</div>
+                    <div style={{ fontSize: '80px' }}>About Our {props.restaurant} Restaurant</div>
                     <div style={{ fontSize: '20px' }}>
-                        Wheeeeeere culinary passion meets local flavors. We specialize in delectable dishes crafted from fresh, locally sourced ingredients.
+                        Where culinary passion meets local flavors. We specialize in delectable dishes crafted from fresh, locally sourced ingredients.
                     </div>
                     <div style={{ fontSize: '20px' }}>
                         Our dedicated team is committed to providing a memorable dining experience for every guest.

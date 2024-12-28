@@ -13,10 +13,11 @@ pool.getConnection((err, connection) => {
     if (err) {
         console.error('Database connection failed:', err);
         return;
-    }
-    else {
+    } else {
         console.log('Database connected successfully');
     }
-})
+        // Close the connection after executing the query
+    });
+
 
 module.exports = pool;

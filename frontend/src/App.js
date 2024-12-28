@@ -18,14 +18,20 @@ import AdminNavbar from './Components/Admin/JSX/AdminNavbar';
 import AdminMenu from './Components/Admin/JSX/AdminMenu';
 import ModifyItem from './Components/Admin/JSX/ModifyItem';
 import DeleteItem from './Components/Admin/JSX/DeleteItem';
+import Dashboard from './Components/Admin/JSX/Dashboard';
+import Order from './Components/Admin/JSX/order';
+import Inventory from './Components/Admin/JSX/Inventory';
+import VoiceToText from './Components/User/JSX/VoiceToText';
 
 function App() {
   const [selectedItem, setSelectedItem] = useState(null);
   const [category, setCategory] = useState(null);
   const [showSignupForm, setShowSignupForm] = useState(true);
   const [name, setName] = useState(null);
+  const [restaurant, setRestaurant] = useState('Foodies')
+  console.log(121, restaurant);
 
-  const setUserData = async () => {  
+  const setUserData = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/auth/getuser', {
         withCredentials: true,
@@ -41,40 +47,53 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    setUserData();
-    const intervalId = setInterval(() => {
-      setUserData();
-    }, 2000);
-    return () => clearInterval(intervalId);
-  }, []);
+  // useEffect(() => {
+  //   setUserData();
+  //   const intervalId = setInterval(() => {
+  //     setUserData();
+  //   }, 2000);
+  //   return () => clearInterval(intervalId);
+  // }, []);
 
   return (
     <Router>
       <div className="App">
-        <Navbar
-          setCategory={setCategory}
-          name={name ? `Welcome ${name}` : null}
-          showLoginOrLogout={showSignupForm ? 'Login/Signup' : 'Logout'}
-        />
-        {/* <AdminNavbar/> */}
+        {name === 'admin' ? (
+          <AdminNavbar             showLoginOrLogout={showSignupForm ? 'Login/Signup' : 'Logout'}
+          />
+        ) 
+        
+        : (
+          <Navbar
+            setCategory={setCategory}
+            setRestaurant={setRestaurant}
+            restaurant={restaurant}
+            name={name ? `Welcome ${name}` : null}
+            showLoginOrLogout={showSignupForm ? 'Login/Signup' : 'Logout'}
+          />
+        )}
         <Routes>
           <Route
             path="/"
             element={
               <>
-              <AdminMenu/>
-              <ModifyItem/>
-              <DeleteItem/>
-                <Hero />
-                <AboutUs />
+               <VoiceToText/>
+                <Hero restaurant={restaurant} />
+                <AboutUs restaurant={restaurant} />
                 <Special />
                 <Categories setItem={setCategory} />
-                <Footer />
+                <Footer restaurant={restaurant} />
               </>
             }
           />
           <Route path="/about" element={<AboutRestaurant />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/manage-orders" element={<Order />} />
+          <Route path="/manage-inventory" element={<Inventory />} />
+          <Route path="/addItem" element={<AdminMenu />} />
+          <Route path="/deleteItem" element={<DeleteItem/>} />
+          <Route path="/modifyItem" element={<ModifyItem />} />
+
           <Route path="/special" element={<><Special /><Footer /></>} />
           <Route path="/menu" element={<><Menu setItem={setSelectedItem} /><Footer /></>} />
           <Route path="/cart" element={<><Cart /><Footer /></>} />

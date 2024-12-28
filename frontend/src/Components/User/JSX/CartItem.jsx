@@ -26,6 +26,9 @@ const CartItem = () => {
     }
 
     const clear = () => {
+        console.log(2343434);
+        
+        alert('Cart Cleared successfully')
         dispatch(clearAllCart());
     }
 
@@ -44,7 +47,9 @@ const CartItem = () => {
         };
         try {
             const response = await axios.post('http://localhost:5000/api/cart/confirmOrder', dataToSend, { withCredentials: true });
-            console.log('Order submitted:', response.data);
+            alert('Order placed successfully')
+            dispatch(clearAllCart());
+
         } catch (error) {
             console.error('Error submitting order:', error);
         }
@@ -84,7 +89,7 @@ const CartItem = () => {
                 onChange={handleSpecialNotesText}  
             />
             <h3>Total Amount:PKR{totalAmount}</h3>
-            <button onClick={sendToBackend}>Confirm Your Order</button>
+            <button style={{height:'40px',width:'170px',backgroundColor:'green',margin:'auto'}}onClick={sendToBackend}>Confirm Your Order</button>
              <button onClick={clear} className='clear-cart'>Clear Cart</button></>}
         </div>
     );

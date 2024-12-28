@@ -55,9 +55,9 @@ const ModifyItem = () => {
     };
 
     return (
-        <div>
-            <h2>Modify Item</h2>
-            <label htmlFor="itemIdentifier">
+        <div style={{ padding: '20px', maxWidth: '400px', margin: '30px auto', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+            <h2 style={{ textAlign: 'center' }}>Modify Item</h2>
+            <label htmlFor="itemIdentifier" style={{ display: 'block', marginBottom: '10px' }}>
                 Enter id or name of the item to Modify:
             </label>
             <input
@@ -66,13 +66,19 @@ const ModifyItem = () => {
                 placeholder="e.g., 1 or cake"
                 value={itemIdentification}
                 onChange={(e) => setItemIdentification(e.target.value)}
+                style={{ width: '100%', padding: '8px', marginBottom: '10px', border: '1px solid #ccc', borderRadius: '4px' }}
             />
-            <button onClick={() => handleModify(itemIdentification)}>Submit</button>
+            <button 
+                onClick={() => handleModify(itemIdentification)} 
+                style={{ padding: '10px 15px', backgroundColor: '#007bff', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+            >
+                Submit
+            </button>
 
-            {error && <div style={{ color: 'red' }}>{error}</div>}
+            {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
 
             {itemDetails && (
-                <div>
+                <div style={{ marginTop: '20px' }}>
                     <h3>Item Details:</h3>
                     <p><strong>Name:</strong> {itemDetails.item_name}</p>
                     <p><strong>Price:</strong> {itemDetails.item_price}</p>
@@ -81,47 +87,57 @@ const ModifyItem = () => {
                     <p><strong>Image:</strong> <img src={itemDetails.image_link} alt={itemDetails.item_name} width="100" /></p>
 
                     <h4>Update Item</h4>
-                    <label>
+                    <label style={{ display: 'block', marginBottom: '10px' }}>
                         Name:
                         <input
                             type="text"
                             value={updatedItem.item_name}
                             onChange={(e) => setUpdatedItem({ ...updatedItem, item_name: e.target.value })}
+                            style={{ width: '100%', padding: '8px', marginBottom: '10px', border: '1px solid #ccc', borderRadius: '4px' }}
                         />
                     </label>
-                    <label>
+                    <label style={{ display: 'block', marginBottom: '10px' }}>
                         Price:
                         <input
                             type="number"
                             value={updatedItem.item_price}
                             onChange={(e) => setUpdatedItem({ ...updatedItem, item_price: e.target.value })}
+                            style={{ width: '100%', padding: '8px', marginBottom: '10px', border: '1px solid #ccc', borderRadius: '4px' }}
                         />
                     </label>
-                    <label>
+                    <label style={{ display: 'block', marginBottom: '10px' }}>
                         Quantity:
                         <input
                             type="number"
                             value={updatedItem.item_quantity}
                             onChange={(e) => setUpdatedItem({ ...updatedItem, item_quantity: e.target.value })}
+                            style={{ width: '100%', padding: '8px', marginBottom: '10px', border: '1px solid #ccc', borderRadius: '4px' }}
                         />
                     </label>
-                    <label>
+                    <label style={{ display: 'block', marginBottom: '10px' }}>
                         Description:
                         <textarea
                             value={updatedItem.description}
                             onChange={(e) => setUpdatedItem({ ...updatedItem, description: e.target.value })}
+                            style={{ width: '100%', padding: '8px', marginBottom: '10px', border: '1px solid #ccc', borderRadius: '4px' }}
                         />
                     </label>
-                    <label>
+                    <label style={{ display: 'block', marginBottom: '10px' }}>
                         Image Link:
                         <input
                             type="text"
                             value={updatedItem.image_link}
                             onChange={(e) => setUpdatedItem({ ...updatedItem, image_link: e.target.value })}
+                            style={{ width: '100%', padding: '8px', marginBottom: '10px', border: '1px solid #ccc', borderRadius: '4px' }}
                         />
                     </label>
 
-                    <button onClick={handleUpdateItem}>Update Item</button>
+                    <button 
+                        onClick={handleUpdateItem} 
+                        style={{ padding: '10px 15px', backgroundColor: '#28a745', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                    >
+                        Update Item
+                    </button>
                 </div>
             )}
         </div>

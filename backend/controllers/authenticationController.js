@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const signup = async (req, res) => {
     try {
         const { name, username, email, password, phno } = req.body;
-        if (!name || !phno || !username || !email || !password) {
+        if (!name || !username || !email || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
         const hashedPassword = await bcrypt.hash(password, 10);

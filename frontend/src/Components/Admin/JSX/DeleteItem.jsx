@@ -24,9 +24,9 @@ const DeleteItem = () => {
     };
 
     return (
-        <div>
-            <h2>Delete Item</h2>
-            <label htmlFor="itemIdentifier">
+        <div style={{ padding: '20px', maxWidth: '400px', margin: '30px auto', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 2px 5px rgba(0,0,0,0.1)' }}>
+            <h2 style={{ textAlign: 'center' }}>Delete Item</h2>
+            <label htmlFor="itemIdentifier" style={{ display: 'block', marginBottom: '10px' }}>
                 Enter the name or ID of the item to delete:
             </label>
             <input
@@ -35,11 +35,17 @@ const DeleteItem = () => {
                 placeholder="e.g., 1 or cake"
                 value={itemIdentifier}
                 onChange={(e) => setItemIdentifier(e.target.value)}
+                style={{ width: '100%', padding: '8px', marginBottom: '10px', border: '1px solid #ccc', borderRadius: '4px' }}
             />
-            <button onClick={handleDelete}>Delete Item</button>
+            <button 
+                onClick={handleDelete} 
+                style={{ padding: '10px 15px', backgroundColor: '#dc3545', color: '#fff', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+            >
+                Delete Item
+            </button>
 
-            {error && <div style={{ color: 'red' }}>{error}</div>}
-            {message && <div style={{ color: 'green' }}>{message}</div>}
+            {error && <div style={{ color: 'red', marginTop: '10px' }}>{error}</div>}
+            {message && <div style={{ color: 'green', marginTop: '10px' }}>{message}</div>}
         </div>
     );
 };

@@ -16,6 +16,7 @@ const SignUp = (props) => {
   const [handleError, setError] = useState(false);
   const myDivRef = useRef(null);
   const navigate = useNavigate();
+console.log(name,password);
 
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
@@ -132,6 +133,7 @@ const SignUp = (props) => {
                   placeholder="Email or username"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  autoComplete="off"  
                 />
                 <input
                   type="password"
