@@ -1,10 +1,9 @@
 const pool = require('../config/config');
 
 const createNewUser = async (data) => {
-  try {
-    const query = `INSERT INTO signup (name, username, email, password) VALUES (?, ?, ?, ?)`;
-    const [result] = await pool.promise().query(query, [data.name, data.username, data.email, data.password]);
-    console.log('Data inserted in signup table successfully!');
+  try {    
+    const query = `INSERT INTO signup (name, username, email, password,phone_number) VALUES (?, ?, ?, ?,?)`;
+    const [result] = await pool.promise().query(query, [data.name, data.username, data.email, data.password,data.phno]);
     return result;
   } catch (error) {
     console.log('Error occurred while inserting in signup table:', error);
@@ -38,6 +37,17 @@ const getUserByEmail = async (data) => {
 const getSignUpId = async (refreshToken) => {
   try {
     const querry = `SELECT signup_id from login where refresh_token =?`
+    const result = await pool.promise().query(querry, [refreshToken])
+    if (result.length === 0) return null
+    else return result[0]
+  } catch (error) {
+    console.log('Error in getSignUpId:', error);
+    throw error;
+  }
+}
+const getLoginId = async (refreshToken) => {
+  try {
+    const querry = `SELECT login_id from login where refresh_token =?`
     const result = await pool.promise().query(querry, [refreshToken])
     if (result.length === 0) return null
     else return result[0]
@@ -104,15 +114,26 @@ const getUserByRefreshToken = async (data) => {
 };
 const removeRefreshToken = async (signup_id, refreshToken) => {
   try {
-    const query = `DELETE FROM login WHERE signup_id =? AND refresh_token=?`
-    const result = await pool.promise().query(query, [signup_id, refreshToken])
+    // const query = `DELETE FROM login WHERE signup_id =? AND refresh_token=?`
+    const query=`UPDATE login SET refresh_token = NULL WHERE signup_id=? AND refresh_token=?`
+    const result = await pool.promise().query(query, [signup_id,refreshToken])
   } catch (error) {
     console.log('Error in removeRefreshToken:', error);
     throw error;
   }
 }
 
+const addInCustomer=async(data)=>{
+  try {
+    const query=`INSERT INTO customer (phone_number,signup_id) VALUES (?,?)`
+    await pool.promise().query(query,[data])
 
+  } catch (error) {
+    console.log('Error in addCustomerInfo function',error);
+    throw error;
+
+  }
+}
 module.exports = {
   createNewUser,
   getUserByEmail,
@@ -122,5 +143,7 @@ module.exports = {
   getUserBySignupid,
   getRefreshToken,
   getUserByRefreshToken,
-  removeRefreshToken
+  removeRefreshToken,
+  addInCustomer,
+  getLoginId
 };

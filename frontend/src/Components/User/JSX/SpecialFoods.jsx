@@ -1,7 +1,7 @@
 import React from 'react';
 import '../CSS/Special.css';
 import Display from './DisplayCategory.jsx'; // Removed duplicate import
-import pictures from '../../Assets/specials.js';
+import pictures from '../../../Assets/specials.js';
 
 const SpecialFoods = () => {
   return (

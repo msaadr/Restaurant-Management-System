@@ -1,5 +1,5 @@
 import React from 'react'
-import SpecialFoods from '../../Components/JSX/SpecialFoods'
+import SpecialFoods from '../../Components/User/JSX/SpecialFoods'
 
 const Special = () => {
   return (

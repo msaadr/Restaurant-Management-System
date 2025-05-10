@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from '../../Pages/JSX/Menu';
+import Menu from '../../../Pages/JSX/Menu';
 
 const RelatedProducts = (props) => {
   return (

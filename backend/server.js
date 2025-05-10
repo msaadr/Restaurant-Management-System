@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
 const auth = require('./routes/authenticationRoutes');
-const cart = require('./routes/cartRoutes')
+const order = require('./routes/orderRoutes')
+const addItemInfo=require('./routes/addItemRoutes')
+const admin=require('./routes/admin')
 const dotenv = require('dotenv');
 const cookieParser = require('cookie-parser')
 const cors = require('cors');
@@ -17,7 +19,7 @@ const port = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {
     try {
-        res.send('Hello Worrld!');
+        res.send('Hello World!');
     } catch (error) {
         console.error('Error in / route:', error);
         res.status(500).send('Internal Server Error');
@@ -25,8 +27,9 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', auth);
-app.use('/api/cart', cart)
-
+app.use('/api/cart', order)
+app.use('/api/admin', admin)
+app.use('/api/addItemToCart',addItemInfo)
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}!`);
 });

@@ -1,15 +1,15 @@
 import React from 'react'
 import '../CSS/Footer.css'
-const Footer = () => {
+const Footer = (props) => {
   return (
     <div>
       <footer className="footer">
         <div className="footer-container">
           <div className="footer-left">
-            <h3>Foodie's Restaurant</h3>
+            <h3>{props.restaurant} Restaurant</h3>
             <p>123 Food Street, City, Country</p>
             <p>Phone: (123) 456-7890</p>
-            <p>Email: info@foodiesrestaurant.com</p>
+            <p>Email: info@{props.restaurant}restaurant.com</p>
           </div>
           <div className="footer-right">
             <ul className="social-links">

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import '../CSS/Categories.css';
 import Display from './DisplayCategory'
-import categories from '../../Assets/categories/categories';
+import categories from '../../../Assets/categories/categories';
 import { useNavigate } from 'react-router-dom';
 const Categories = (props) => {
     const navigate = useNavigate();

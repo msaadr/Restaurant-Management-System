@@ -5,12 +5,12 @@ const parseDuration = require('../utils/parseDuration')
 const jwt = require('jsonwebtoken')
 const signup = async (req, res) => {
     try {
-        const { name, username, email, password } = req.body;
+        const { name, username, email, password, phno } = req.body;
         if (!name || !username || !email || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        const newUser = { name, username, email, password: hashedPassword };
+        const newUser = { name, username, email, password: hashedPassword, phno };
         await userModel.createNewUser(newUser);
         res.status(201).json({ message: 'Signup successful' });
     } catch (error) {
@@ -66,7 +66,7 @@ const login = async (req, res) => {
 };
 
 const getCurrentUser = (req, res) => {
-    res.json({ username: req.cookies.username })
+    res.json({ username: req.cookies.username, cookies: req.cookies })
 }
 const logout = async (req, res) => {
     try {
@@ -79,7 +79,8 @@ const logout = async (req, res) => {
         if (!userData) {
             return res.status(404).json({ message: 'User not found for the given refresh token' });
         }
-        await userModel.removeRefreshToken(userData.signup_id, refreshToken);        res.clearCookie('accessToken', { httpOnly: true, sameSite: 'Strict', secure: true });
+        await userModel.removeRefreshToken(userData.signup_id, refreshToken);
+        res.clearCookie('accessToken', { httpOnly: true, sameSite: 'Strict', secure: true });
         res.clearCookie('refreshToken', { httpOnly: true, sameSite: 'Strict', secure: true });
         res.clearCookie('username', { httpOnly: true, sameSite: 'Strict', secure: true });
 
